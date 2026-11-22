@@ -88,3 +88,19 @@ The AI tab has a **REAL DATA** card. It comes from the open MIMIC-IV-ED Demo v2.
 ## Built during the event / AI use
 Everything here was written during EvoHacks 2.0. External libraries: Three.js, qrcode-generator (CDN).
 AI tools helped write parts of the code. The idea, design decisions, testing and fixes are ours, and we can explain every part.
+## How this was built: human and AI
+I built QueueTwin with AI coding assistants. Here is who did what.
+
+**What I did**
+- The idea and the problem, from my own experience waiting in a hospital queue in Thailand.
+- Product decisions: what to build, what to cut, and what the family and caregiver features should do.
+- Play-testing every version and reporting the bugs (patients moving wrong, pause not stopping, too many arrivals, a confusing staff screen).
+- Setting up and connecting the real services: the Agentboxd inbox, the MojoAuth app, Firebase, the Vercel project and its environment variables.
+- Deploying to GitHub and Vercel, and testing the live sponsor integrations with real emails and a real sign-in.
+- Recording the voice-over and the screen footage, and submitting the project.
+
+**What AI assistants did**
+- Wrote most of the code: the 3D scene, the queue simulation, the optimiser, the server proxy and the training scripts.
+- Drafted the pitch deck, the README and the video edit, which I reviewed and directed.
+
+I checked the results myself and asked for every number to come from the simulation instead of fixed formulas.
