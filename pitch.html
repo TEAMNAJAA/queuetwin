@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QueueTwin AI — Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040a17;--ink:#eaf2ff;--mut:#8ea3c7;--cy:#22d3ee;--gr:#34d399;--ro:#fb7185;--am:#fbbf24;--line:rgba(120,170,255,.2);--card:rgba(13,25,51,.72)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:#02060f;overflow:hidden;font-family:Inter,"Segoe UI",system-ui,sans-serif;color:var(--ink)}
+#stage{position:fixed;left:50%;top:50%;width:1600px;height:900px;transform-origin:center;background:
+radial-gradient(900px 520px at 88% -8%,rgba(34,211,238,.2),transparent 62%),
+radial-gradient(760px 520px at -6% 108%,rgba(52,211,153,.15),transparent 60%),
+radial-gradient(700px 400px at 50% 120%,rgba(59,130,246,.14),transparent 60%),var(--bg);overflow:hidden}
+#stage::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(120,170,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(120,170,255,.045) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 78%);pointer-events:none}
+.slide{position:absolute;inset:0;padding:58px 84px 70px;opacity:0;visibility:hidden;transition:opacity .45s ease;z-index:1;display:flex;flex-direction:column}
+.slide.on{opacity:1;visibility:visible}
+.bar{display:flex;align-items:center;gap:18px;margin-bottom:34px}
+.mark{width:50px;height:50px;border-radius:14px;background:linear-gradient(145deg,#0b2447,#0a1a36);border:1px solid rgba(34,211,238,.5);display:grid;place-items:center;box-shadow:0 0 28px rgba(34,211,238,.28)}
+.logo{font-weight:900;font-size:30px;letter-spacing:-.5px}.logo span{color:var(--cy)}
+.sep{width:2px;height:28px;background:var(--ro);border-radius:2px}
+.kick{font-weight:800;letter-spacing:4px;font-size:15px;color:#cfe0ff}
+.sp{flex:1}
+.pill{border:1.5px solid rgba(251,113,133,.75);color:#ffe1e6;border-radius:99px;padding:8px 18px;font-weight:800;font-size:13px;letter-spacing:2px}
+.pill.ok{border-color:rgba(52,211,153,.7);color:#c9f7e4}
+h1{font-size:84px;line-height:1.02;font-weight:900;letter-spacing:-2.5px;max-width:1250px}
+h2{font-size:56px;line-height:1.08;font-weight:900;letter-spacing:-1.5px;max-width:1380px}
+.hl{color:var(--cy)}.ro{color:var(--ro)}.gr{color:var(--gr)}
+.lead{font-size:27px;line-height:1.45;color:#c5d5f2;max-width:1150px;margin-top:22px}
+.grid{display:grid;gap:22px;margin-top:38px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:1.05fr 1fr}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 28px;backdrop-filter:blur(10px);position:relative}
+.card::before{content:"";position:absolute;left:0;top:26px;width:4px;height:26px;background:var(--ro);border-radius:0 4px 4px 0}
+.card h3{font-size:16px;letter-spacing:3px;font-weight:800;color:#dbe7ff;margin-bottom:12px}
+.card p,.card li{font-size:21px;line-height:1.5;color:#c5d5f2}
+.card ul{padding-left:20px}.card li{margin:5px 0}
+.num{font-size:66px;font-weight:900;letter-spacing:-2px;line-height:1;color:var(--cy)}
+.src{font-size:14px;color:var(--mut);margin-top:10px;line-height:1.4}
+.foot{margin-top:auto;display:flex;align-items:center;gap:14px;color:var(--mut);font-size:17px;font-weight:600;letter-spacing:.5px}
+.foot b{color:#dbe7ff}
+.rule{height:2px;background:linear-gradient(90deg,var(--cy),transparent);margin:30px 0 22px;border-radius:2px}
+.big{font-size:38px;font-weight:800;letter-spacing:-.5px}
+.quote{font-size:31px;line-height:1.42;font-weight:600;color:#eaf2ff;border-left:5px solid var(--cy);padding:6px 0 6px 26px}
+.quote small{display:block;margin-top:14px;font-size:18px;color:var(--mut);font-weight:600}
+#walk{padding:20px 0 0}
+#walk .bar{margin:0 160px 12px}
+.frame{width:1280px;height:720px;margin:0 auto;border-radius:18px;overflow:hidden;border:1px solid rgba(34,211,238,.45);box-shadow:0 30px 90px rgba(0,0,0,.65),0 0 60px rgba(34,211,238,.16);background:#050b18;position:relative}
+.frame iframe{width:1600px;height:900px;border:0;transform:scale(.8);transform-origin:0 0}
+.lower{display:flex;justify-content:space-between;margin:14px 160px 0;font-weight:800;letter-spacing:2px;font-size:15px;color:#e3ecff;white-space:nowrap}
+.lower span{border-left:4px solid var(--ro);padding-left:14px}
+.btn{font:inherit;font-weight:800;font-size:14px;letter-spacing:1.5px;color:#04121f;background:linear-gradient(135deg,#22d3ee,#34d399);border:0;border-radius:99px;padding:10px 20px;cursor:pointer}
+pre{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace;font-size:17.5px;line-height:1.62;color:#cfe3ff;background:rgba(3,9,22,.86);border:1px solid var(--line);border-radius:18px;padding:22px 24px;white-space:pre-wrap}
+pre .c{color:#6f88b3}pre .k{color:#7dd3fc}pre .f{color:#fbbf24}pre .s{color:#86efac}
+.step{display:flex;gap:16px;align-items:flex-start;margin:0 0 18px}
+.step i{flex:none;width:44px;height:44px;border-radius:13px;background:rgba(34,211,238,.14);border:1px solid rgba(34,211,238,.55);display:grid;place-items:center;font-style:normal;font-weight:900;font-size:20px;color:var(--cy)}
+.step b{display:block;font-size:23px;margin-bottom:3px}.step span{font-size:19px;color:#b9cbea;line-height:1.45}
+.flow{display:grid;grid-template-columns:1fr 70px 1fr 70px 1fr;align-items:center;row-gap:20px;margin-top:34px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;text-align:center}
+.box b{display:block;font-size:21px}.box small{display:block;color:var(--mut);font-size:15.5px;margin-top:5px;line-height:1.4}
+.box.a{border-color:rgba(34,211,238,.6)}.box.g{border-color:rgba(52,211,153,.6)}.box.m{border-color:rgba(251,191,36,.6)}
+.arr{text-align:center;font-size:30px;color:var(--cy);font-weight:900}
+.chk{list-style:none;padding:0;margin-top:8px}.chk li{font-size:22px;line-height:1.45;color:#cfdcf5;margin:11px 0;padding-left:40px;position:relative}
+.chk li::before{content:"✓";position:absolute;left:0;top:0;width:27px;height:27px;border-radius:8px;background:rgba(52,211,153,.16);border:1px solid rgba(52,211,153,.6);color:var(--gr);display:grid;place-items:center;font-size:16px;font-weight:900}
+#hud{position:fixed;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:8px;z-index:5;transition:opacity .3s}
+#hud i{width:26px;height:4px;border-radius:4px;background:rgba(160,190,255,.25);cursor:pointer}#hud i.on{background:var(--cy)}
+body.clean #hud{opacity:0}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<section class="slide on">
+  <div class="bar"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 12h3.5l2.4-6.5 4.2 13 2.7-6.5H21" stroke="#22d3ee" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="logo">Queue<span>Twin</span> AI</div><div class="sep"></div><div class="kick">3D HOSPITAL QUEUE DIGITAL TWIN</div><div class="sp"></div><div class="pill">PROTOTYPE · SIMULATED PATIENTS</div></div>
+  <h1>Test the fix <span class="hl">before</span> the patients wait.</h1>
+  <p class="lead">A live 3D twin of a hospital's outpatient flow. Staff see the bottleneck forming, managers test staffing changes in simulation, and families follow the queue from their own phone.</p>
+  <div class="grid g3">
+    <div class="card"><div class="num">122.6<span style="font-size:30px"> min</span></div><p style="margin-top:10px">average outpatient visit in a public hospital</p><div class="src">Rivers State, Nigeria · time-flow study (PMC11087679)</div></div>
+    <div class="card"><div class="num">56.4<span style="font-size:30px">%</span></div><p style="margin-top:10px">of patients waited two hours or more</p><div class="src">Korle-Bu Teaching Hospital, Ghana · BMC Health Serv Res 2025</div></div>
+    <div class="card"><div class="num" style="color:var(--gr)">Fixable</div><p style="margin-top:10px">management changes alone cut consultation and pharmacy waits</p><div class="src">Fujian Provincial Hospital, China · interrupted time series (PMC5568260)</div></div>
+  </div>
+  <div class="foot"><b>EvoHacks 2.0</b> · Projects for Social Good · queuetwin.vercel.app</div>
+</section>
+
+<section class="slide">
+  <div class="bar"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 12h3.5l2.4-6.5 4.2 13 2.7-6.5H21" stroke="#22d3ee" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="logo">Queue<span>Twin</span> AI</div><div class="sep"></div><div class="kick">THE PROBLEM</div></div>
+  <h2>Long waits are a <span class="ro">flow problem</span> nobody can see.</h2>
+  <div class="grid g2" style="margin-top:44px;align-items:start">
+    <div>
+      <div class="quote">“I was stuck in a long line at a hospital in Thailand — because of how the queue was managed.”<small>Why I built QueueTwin</small></div>
+      <div class="rule"></div>
+      <div class="big">Queue apps manage people <span class="ro">after</span> they arrive.<br>QueueTwin fixes the flow <span class="hl">before</span> they wait.</div>
+    </div>
+    <div class="grid" style="margin-top:0;gap:16px">
+      <div class="card"><h3>MANAGERS</h3><p>Can't see a bottleneck forming, and can't test a staffing change without trying it on real patients.</p></div>
+      <div class="card"><h3>PATIENTS</h3><p>Don't know how long it will take. Seniors sit alone watching a call screen.</p></div>
+      <div class="card"><h3>FAMILIES</h3><p>Can't follow the queue from work or home, so someone has to wait in the lobby all day.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="walk">
+  <div class="bar"><div class="mark" style="width:42px;height:42px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 12h3.5l2.4-6.5 4.2 13 2.7-6.5H21" stroke="#22d3ee" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="logo" style="font-size:25px">Queue<span>Twin</span> AI</div><div class="sep"></div><div class="kick">LIVE PRODUCT WALKTHROUGH</div><div class="sp"></div><button class="btn" id="runDemo">▶ RUN 30s DEMO</button><div class="pill">SIMULATED PATIENTS · NOT A REAL HOSPITAL</div></div>
+  <div class="frame"><iframe id="app" title="QueueTwin live app" data-src="./index.html"></iframe></div>
+  <div class="lower"><span>REGISTRATION → EXAM → PHARMACY</span><span>FULL-DAY SIMULATION · 3 SEEDS</span><span>ONE FIGURE = ONE PATIENT · RED = BOTTLENECK</span></div>
+</section>
+
+<section class="slide">
+  <div class="bar"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 12h3.5l2.4-6.5 4.2 13 2.7-6.5H21" stroke="#22d3ee" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="logo">Queue<span>Twin</span> AI</div><div class="sep"></div><div class="kick">HOW IT WORKS · THE CODE</div></div>
+  <h2>One simulation drives <span class="hl">every number</span>.</h2>
+  <div class="grid g2" style="margin-top:34px;align-items:start;grid-template-columns:.9fr 1.1fr">
+    <div>
+      <div class="step"><i>1</i><div><b>Simulate</b><span><code>step()</code> advances the hospital 15 simulated seconds: patients arrive on a time-of-day curve, wait, and get served.</span></div></div>
+      <div class="step"><i>2</i><div><b>Prioritise</b><span><code>waiting()</code> sorts each line: emergency → urgent → normal, then first come, first served.</span></div></div>
+      <div class="step"><i>3</i><div><b>Compare</b><span><code>simDayCurve()</code> replays the whole day, 07:30–17:00, for “do nothing” and for the plan, on 3 random seeds.</span></div></div>
+      <div class="step"><i>4</i><div><b>Optimise</b><span><code>optimizeSameBudget()</code> searches staff placements per shift window with the same head-count and keeps what the simulation says is best.</span></div></div>
+      <div class="step"><i>5</i><div><b>Predict</b><span>A gradient-boosting model, trained on 254,081 simulated visits, predicts each patient's wait at arrival.</span></div></div>
+    </div>
+    <pre><span class="c">// who is next? urgency first, then arrival time</span>
+<span class="k">function</span> <span class="f">waiting</span>(St, s) {
+  <span class="k">return</span> St.patients
+    .<span class="f">filter</span>(p =&gt; p.st === s &amp;&amp; p.mode === <span class="s">'w'</span>)
+    .<span class="f">sort</span>((a, b) =&gt; a.urg - b.urg || a.enter - b.enter);
+}
+
+<span class="c">// replay a full day for a scenario (simplified)</span>
+[<span class="s">11</span>, <span class="s">29</span>, <span class="s">47</span>].<span class="f">forEach</span>(seed =&gt; {
+  <span class="k">const</span> c = <span class="f">newState</span>();      <span class="c">// copy of the hospital</span>
+  <span class="k">while</span> (c.t &lt; <span class="s">1020</span>)          <span class="c">// until 17:00</span>
+    <span class="f">step</span>(c, <span class="s">0.5</span>, r1, r2);   <span class="c">// arrivals → queue → service</span>
+  <span class="c">// then average each patient's wait by arrival hour</span>
+});</pre>
+  </div>
+  <div class="foot">Three.js · plain JavaScript · Vercel serverless · Firebase Realtime Database</div>
+</section>
+
+<section class="slide">
+  <div class="bar"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 12h3.5l2.4-6.5 4.2 13 2.7-6.5H21" stroke="#22d3ee" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="logo">Queue<span>Twin</span> AI</div><div class="sep"></div><div class="kick">RESULT &amp; SAFEGUARDS</div><div class="sp"></div><div class="pill">SIMULATION RESULT · NOT MEASURED IN A HOSPITAL</div></div>
+  <h2>Same staff, <span class="gr">smarter placement</span>.</h2>
+  <div class="grid g2" style="margin-top:36px;align-items:start;grid-template-columns:.8fr 1.2fr">
+    <div class="card" style="padding:32px"><h3>DEFAULT DEMO DAY · 5 STAFF</h3>
+      <div class="num" style="color:var(--gr);font-size:104px">−35%</div>
+      <p style="margin-top:12px;font-size:25px"><b style="color:#fff">average wait</b> with <b style="color:#fff">+0 staff-hours</b></p>
+      <p style="margin-top:14px;font-size:18px;color:var(--mut)">The optimiser only moves the existing staff between stations per shift window. Press “Re-balance SAME staff” in the app to reproduce it.</p>
+    </div>
+    <div class="card" style="padding:30px 32px"><h3>HOW WE KEEP THE NUMBERS HONEST</h3>
+      <ul class="chk">
+        <li>Charts, advisor and “hours saved” come from the full-day simulation, not from fixed formulas.</li>
+        <li>Baseline and plan run on the same random seeds and the same starting staff.</li>
+        <li>Every saving is shown next to its cost in staff-hours.</li>
+        <li>Sponsor actions say LIVE only when the API confirms; otherwise they are labelled Sandbox.</li>
+        <li>Public QR and cloud data mask the surname and hide clinical details.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot">Patients, arrival curve and service times are simulated assumptions. A real pilot would calibrate them from a clinic's own queue log.</div>
+</section>
+
+<section class="slide">
+  <div class="bar"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 12h3.5l2.4-6.5 4.2 13 2.7-6.5H21" stroke="#22d3ee" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="logo">Queue<span>Twin</span> AI</div><div class="sep"></div><div class="kick">AI MODEL · REAL-DATA CHECK</div><div class="sp"></div><div class="pill">254,081 SIMULATED VISITS · 220 REAL VISITS</div></div>
+  <h2>We tested the AI on <span class="hl">simulated</span> and <span class="ro">real</span> data.</h2>
+  <div class="grid g3">
+    <div class="card"><h3>AI WAIT PREDICTOR · SIMULATED</h3><div class="num" style="color:var(--gr)">10.2<span style="font-size:30px"> min error</span></div><p style="margin-top:10px">against 23.9 min for the standard queue formula. That is 57% lower. R² 0.96 against 0.72.</p><div class="src">254,081 simulated visits · tested on 400 unseen days</div></div>
+    <div class="card"><h3>REAL-DATA CHECK · EMERGENCY ROOM</h3><div class="num">2<span style="font-size:30px">% better</span></div><p style="margin-top:10px">than a median guess on 220 real ER visits. ER time depends on illness, tests and beds, not on the queue.</p><div class="src">MIMIC-IV-ED Demo v2.2 · 5-fold × 5, split by patient</div></div>
+    <div class="card"><h3>WHAT RESEARCH SAYS</h3><div class="num" style="color:var(--gr)">Evidence</div><p style="margin-top:10px">A systematic review of outpatient clinics: matching resources to demand and improving processes may reduce waits.</p><div class="src">Australian Health Review · doi:10.1071/AH16275</div></div>
+  </div>
+  <div class="rule"></div>
+  <div class="big">Open real data is too small to train on, so we use its real arrival pattern to set up the twin.<br>That gap is why a hospital should upload <span class="hl">its own queue log</span>.</div>
+  <div class="foot">QueueTwin has not yet been tested in a real hospital. Reproduce both results with the scripts in the repo: train_eta_sim.py and train_mimic_ed.py.</div>
+</section>
+
+<section class="slide">
+  <div class="bar"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 12h3.5l2.4-6.5 4.2 13 2.7-6.5H21" stroke="#22d3ee" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="logo">Queue<span>Twin</span> AI</div><div class="sep"></div><div class="kick">REAL INTEGRATIONS</div></div>
+  <h2>Real APIs. <span class="hl">Keys never reach the browser.</span></h2>
+  <div class="flow">
+    <div class="box a"><b>Staff browser</b><small>Three.js twin · registration · AI roster</small></div><div class="arr">→</div>
+    <div class="box"><b>Vercel serverless proxy</b><small>api/agentboxd.js · key in env vars · input checks · rate limit</small></div><div class="arr">→</div>
+    <div class="box m"><b>Agentboxd</b><small>send email · human-approved drafts · read replies</small></div>
+    <div class="box a"><b>Staff browser</b><small>publishes masked queue state</small></div><div class="arr">⇄</div>
+    <div class="box"><b>Firebase Realtime Database</b><small>one private room per session</small></div><div class="arr">⇄</div>
+    <div class="box g"><b>Patient / family phone</b><small>scan QR · live position · read aloud · help button</small></div>
+    <div class="box g"><b>Patient / family phone</b><small>“Sign in with MojoAuth”</small></div><div class="arr">→</div>
+    <div class="box"><b>MojoAuth hosted login</b><small>OpenID Connect + PKCE · no client secret</small></div><div class="arr">→</div>
+    <div class="box a"><b>Verified session</b><small>unlocks the patient's own record view</small></div>
+  </div>
+  <div class="rule"></div>
+  <div class="grid g2" style="margin-top:0">
+    <div class="card"><h3>FAMILY AUTO-UPDATES</h3><p>With the patient's consent, Agentboxd emails the family: almost up → your turn → finished. Queue status only.</p></div>
+    <div class="card"><h3>NOT IN THIS BUILD</h3><p>SSOJet clinician sign-in is planned but not connected. The staff-role button is a labelled demo switch.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="bar"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 12h3.5l2.4-6.5 4.2 13 2.7-6.5H21" stroke="#22d3ee" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="logo">Queue<span>Twin</span> AI</div><div class="sep"></div><div class="kick">WHO IT HELPS · WHAT'S NEXT</div></div>
+  <h2>Less waiting, <span class="hl">without a new building</span>.</h2>
+  <div class="grid g3">
+    <div class="card"><h3>SENIORS &amp; FAMILIES</h3><ul><li>Follow the queue from any phone</li><li>Read-aloud and large text</li><li>One-tap help request to staff</li></ul></div>
+    <div class="card"><h3>FRONTLINE STAFF</h3><ul><li>⚠ on anyone waiting 60+ min</li><li>Fast registration, Thai / English</li><li>Fairness check by patient group</li></ul></div>
+    <div class="card"><h3>MANAGERS</h3><ul><li>See the bottleneck in 3D</li><li>Test rosters in simulation first</li><li>Best-time advice to spread the rush</li></ul></div>
+  </div>
+  <div class="rule"></div>
+  <div class="big">Next: pilot with one clinic's real queue log · retrain the AI on it · SSOJet staff sign-in</div>
+  <div class="foot" style="font-size:21px"><b>queuetwin.vercel.app</b> · github.com/TEAMNAJAA/queuetwin · Built at EvoHacks 2.0</div>
+</section>
+
+</div>
+<div id="hud"></div>
+<script>
+const stage=document.getElementById('stage'),slides=[...document.querySelectorAll('.slide')],hud=document.getElementById('hud'),app=document.getElementById('app');
+let cur=0;
+function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
+function go(n){
+  cur=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,i)=>s.classList.toggle('on',i===cur));
+  [...hud.children].forEach((d,i)=>d.classList.toggle('on',i===cur));
+  const onWalk=slides[cur].id==='walk';
+  if(onWalk&&!app.getAttribute('src'))app.setAttribute('src',app.dataset.src);
+  if(!onWalk&&app.getAttribute('src'))app.removeAttribute('src');
+  try{history.replaceState(null,'','#'+(cur+1))}catch(e){}
+}
+function key(e){
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1)}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1)}
+  else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+  else if(e.key==='h'||e.key==='H')document.body.classList.toggle('clean')
+}
+slides.forEach((_,i)=>{const d=document.createElement('i');d.onclick=()=>go(i);hud.append(d)});
+addEventListener('resize',fit);addEventListener('keydown',key);
+app.addEventListener('load',()=>{try{const d=app.contentDocument;if(!d||!d.body)return;d.getElementById('closeOb')?.click();app.contentWindow.addEventListener('keydown',e=>{if(e.target.matches&&e.target.matches('input,select,textarea'))return;if(['ArrowRight','ArrowLeft','PageDown','PageUp'].includes(e.key))key(e)})}catch(e){}});
+document.getElementById('runDemo').onclick=()=>{try{app.contentDocument.getElementById('demoBtn').click()}catch(e){}};
+fit();let h0=1;try{h0=parseInt(location.hash.slice(1))||1}catch(e){}go(h0-1);
+</script>
+</body>
+</html>
