@@ -7,7 +7,7 @@ Built during **EvoHacks 2.0** · Theme: Projects for Social Good
 Opens with a simulated 09:00 morning rush. Click **🧪 Simulate Test Crowd** to turn the bots off.
 
 ## The problem
-Long outpatient waits are often caused by how the flow is managed, not only by the number of patients. Seniors and people who come alone suffer most, and hospitals have no safe way to test a change before trying it on real patients.
+"One day I was sick and had to wait in a long hospital queue. Not because there were too many patients, but because of how the queue was managed."
 
 ## What it does
 **Staff**
